@@ -34,7 +34,7 @@ int main() {
   board[3][4] = Black;
   board[4][3] = Black;
 
-  // TODO: 初期状態の表示
+  // 初期状態の表示
   displayBoard(board);
 
   // TODO: 先行後攻の選択の処理
