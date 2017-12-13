@@ -11,13 +11,13 @@ typedef enum Cell {
   White,
 } Cell;
 
-void getEnableCells(bool, Cell[HIGHT][WIDTH], int[2][64]);
-bool existEnableCells(int[2][64]);
+void getEnableCells(bool, Cell[HIGHT][WIDTH], int[64][2]);
+bool existEnableCells(int[64][2]);
 bool fillBoard(Cell[HIGHT][WIDTH]);
 void finishGame(Cell[HIGHT][WIDTH]);
 bool isOneColor(Cell[HIGHT][WIDTH]);
 void inputCell(int[2]);
-bool canPut(int[2], int[2][64]);
+bool canPut(int[2], int[64][2]);
 void reverse(bool, int[2], Cell[HIGHT][WIDTH]);
 void displayBoard(Cell[HIGHT][WIDTH]);
 
@@ -40,10 +40,18 @@ int main() {
   // TODO: 先行後攻の選択の処理
   bool isFirst = true;
   bool isAI = true;
+  if(isFirst) {
+    isAI = false;
+  }
 
   while(true) {
-    // TODO: enableCellsの初期化
-    int enableCells[2][64];
+    int enableCells[64][2];
+    // enableCellsの初期化
+    for (int i = 0; i < 64; i++) {
+      for(int j = 0; j < 2; j++) {
+        enableCells[i][j] = 0; 
+      }
+    }
     getEnableCells(isFirst, board, enableCells);
 
     if(!existEnableCells(enableCells)) {
@@ -80,14 +88,14 @@ int main() {
   return 0;
 }
 
-void getEnableCells(bool isFirst, Cell board[HIGHT][WIDTH], int enableCells[2][64]) {
+void getEnableCells(bool isFirst, Cell board[HIGHT][WIDTH], int enableCells[64][2]) {
   // TODO: 置くことのできるcellのindexを返す
   // e.g. (1, a), (2, d) のマスが置けるなら[[2, 0], [3, 3]]
 }
 
-bool existEnableCells(int enableCells[2][64]) {
+bool existEnableCells(int enableCells[64][2]) {
   // TODO: 置ける場所が存在したらtrue
-  return true;
+  return false;
 }
 
 bool fillBoard(Cell board[HIGHT][WIDTH]) {
@@ -111,7 +119,7 @@ void inputCell(int selectedCell[2]){
   selectedCell[1] = 3;
 }
 
-bool canPut(int selectedCell[2], int enableCells[2][64]) {
+bool canPut(int selectedCell[2], int enableCells[64][2]) {
   // TODO: enableCellsにselectedCellが含まれていたらtrue
   return true;
 }
