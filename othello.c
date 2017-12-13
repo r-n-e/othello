@@ -9,24 +9,31 @@ typedef enum Cell {
   White,
 } Cell;
 
-void getEnableCells(bool, Cell[2][2], int[2][81]);
+void getEnableCells(bool, Cell[8][8], int[2][81]);
 bool existEnableCells(int[2][81]);
-bool fillBoard(Cell[2][2]);
-void finishGame(Cell[2][2]);
-bool isOneColor(Cell[2][2]);
+bool fillBoard(Cell[8][8]);
+void finishGame(Cell[8][8]);
+bool isOneColor(Cell[8][8]);
 void inputCell(int[2]);
 bool canPut(int[2], int[2][81]);
-void reverse(bool, int[2], Cell[2][2]);
-void displayBoard(Cell[2][2]);
+void reverse(bool, int[2], Cell[8][8]);
+void displayBoard(Cell[8][8]);
 
 int main() {
   // ボードの初期状態
-  Cell board[2][2] = {
-    {Blank, Blank},
-    {Black, White}
-  };
+  Cell board[8][8];
+  for (int y=0; y < 8; y++) {
+    for(int x=0; x < 8; x++) {
+      board[x][y] = Blank;
+    }
+  }
+  board[3][3] = White;
+  board[4][4] = White;
+  board[3][4] = Black;
+  board[3][4] = Black;
 
   // TODO: 初期状態の表示
+  displayBoard(board);
 
   // TODO: 先行後攻の選択の処理
   bool isFirst = true;
@@ -71,7 +78,7 @@ int main() {
   return 0;
 }
 
-void getEnableCells(bool isFirst, Cell board[2][2], int enableCells[2][81]) {
+void getEnableCells(bool isFirst, Cell board[8][8], int enableCells[2][81]) {
   // TODO: 置くことのできるcellのindexを返す
   // e.g. (1, a), (2, d) のマスが置けるなら[[2, 0], [3, 3]]
 }
@@ -81,16 +88,16 @@ bool existEnableCells(int enableCells[2][81]) {
   return true;
 }
 
-bool fillBoard(Cell board[2][2]) {
+bool fillBoard(Cell board[8][8]) {
   // TODO: ボードが埋まっていたらtrue
   return true;
 }
 
-void finishGame(Cell board[2][2]) {
+void finishGame(Cell board[8][8]) {
   // TODO: ゲームの勝敗判定を行う
 }
 
-bool isOneColor(Cell board[2][2]) {
+bool isOneColor(Cell board[8][8]) {
   // TODO: cellが一色だけのときtrue
   return true;
 }
@@ -107,10 +114,10 @@ bool canPut(int selectedCell[2], int enableCells[2][81]) {
   return true;
 }
 
-void reverse(bool isFirst, int selectedCell[2], Cell board[2][2]) {
+void reverse(bool isFirst, int selectedCell[2], Cell board[8][8]) {
   // TODO: selectedCellの場所に置き、boardを更新する
 }
 
-void displayBoard(Cell board[2][2]) {
+void displayBoard(Cell board[8][8]) {
   // TODO: 盤面を標準出力する
 }
