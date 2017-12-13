@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<string.h>
 #include <stdbool.h>
+#define HIGHT 8
+#define WIDTH 8
 
 // ボードの状態を表すenum
 typedef enum Cell {
@@ -9,28 +11,28 @@ typedef enum Cell {
   White,
 } Cell;
 
-void getEnableCells(bool, Cell[8][8], int[2][81]);
-bool existEnableCells(int[2][81]);
-bool fillBoard(Cell[8][8]);
-void finishGame(Cell[8][8]);
-bool isOneColor(Cell[8][8]);
+void getEnableCells(bool, Cell[HIGHT][WIDTH], int[2][64]);
+bool existEnableCells(int[2][64]);
+bool fillBoard(Cell[HIGHT][WIDTH]);
+void finishGame(Cell[HIGHT][WIDTH]);
+bool isOneColor(Cell[HIGHT][WIDTH]);
 void inputCell(int[2]);
-bool canPut(int[2], int[2][81]);
-void reverse(bool, int[2], Cell[8][8]);
-void displayBoard(Cell[8][8]);
+bool canPut(int[2], int[2][64]);
+void reverse(bool, int[2], Cell[HIGHT][WIDTH]);
+void displayBoard(Cell[HIGHT][WIDTH]);
 
 int main() {
   // ボードの初期状態
-  Cell board[8][8];
-  for (int y=0; y < 8; y++) {
-    for(int x=0; x < 8; x++) {
+  Cell board[HIGHT][WIDTH];
+  for (int y=0; y < HIGHT; y++) {
+    for(int x=0; x < WIDTH ; x++) {
       board[x][y] = Blank;
     }
   }
   board[3][3] = White;
   board[4][4] = White;
   board[3][4] = Black;
-  board[3][4] = Black;
+  board[4][3] = Black;
 
   // TODO: 初期状態の表示
   displayBoard(board);
@@ -41,7 +43,7 @@ int main() {
 
   while(true) {
     // TODO: enableCellsの初期化
-    int enableCells[2][81];
+    int enableCells[2][64];
     getEnableCells(isFirst, board, enableCells);
 
     if(!existEnableCells(enableCells)) {
@@ -78,26 +80,26 @@ int main() {
   return 0;
 }
 
-void getEnableCells(bool isFirst, Cell board[8][8], int enableCells[2][81]) {
+void getEnableCells(bool isFirst, Cell board[HIGHT][WIDTH], int enableCells[2][64]) {
   // TODO: 置くことのできるcellのindexを返す
   // e.g. (1, a), (2, d) のマスが置けるなら[[2, 0], [3, 3]]
 }
 
-bool existEnableCells(int enableCells[2][81]) {
+bool existEnableCells(int enableCells[2][64]) {
   // TODO: 置ける場所が存在したらtrue
   return true;
 }
 
-bool fillBoard(Cell board[8][8]) {
+bool fillBoard(Cell board[HIGHT][WIDTH]) {
   // TODO: ボードが埋まっていたらtrue
   return true;
 }
 
-void finishGame(Cell board[8][8]) {
+void finishGame(Cell board[HIGHT][WIDTH]) {
   // TODO: ゲームの勝敗判定を行う
 }
 
-bool isOneColor(Cell board[8][8]) {
+bool isOneColor(Cell board[HIGHT][WIDTH]) {
   // TODO: cellが一色だけのときtrue
   return true;
 }
@@ -109,15 +111,39 @@ void inputCell(int selectedCell[2]){
   selectedCell[1] = 3;
 }
 
-bool canPut(int selectedCell[2], int enableCells[2][81]) {
+bool canPut(int selectedCell[2], int enableCells[2][64]) {
   // TODO: enableCellsにselectedCellが含まれていたらtrue
   return true;
 }
 
-void reverse(bool isFirst, int selectedCell[2], Cell board[8][8]) {
+void reverse(bool isFirst, int selectedCell[2], Cell board[HIGHT][WIDTH]) {
   // TODO: selectedCellの場所に置き、boardを更新する
 }
 
-void displayBoard(Cell board[8][8]) {
-  // TODO: 盤面を標準出力する
+void displayBoard(Cell board[HIGHT][WIDTH]) {
+  printf("   ");
+  for(int i = 0; i < WIDTH; i++){
+    printf("%c ", 'a' + i);
+  }
+  printf("\n");
+
+
+  for (int y=0; y < HIGHT; y++) {
+    printf(" %d ", y+1);
+    for(int x=0; x < WIDTH ; x++) {
+      switch (board[x][y]) {
+        case Black:
+          printf("× ");
+          break;
+        case White:
+          printf("◯ ");
+          break;
+        default:
+          printf("- ");
+          break;
+      }
+    }
+    printf("\n");
+  }
+  printf("--------------------------\n");
 }
