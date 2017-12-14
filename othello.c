@@ -100,6 +100,15 @@ bool existEnableCells(int enableCells[64][2]) {
 
 bool fillBoard(Cell board[HIGHT][WIDTH]) {
   // TODO: ボードが埋まっていたらtrue
+  /*for (int y=0; y < HIGHT; y++) {
+    for(int x=0; x < WIDTH ; x++) {
+      if(board[x][y] == Blank) {
+        return false;
+      }else if(y == HIGHT-1 && x == WIDTH-1) {
+        return true;
+      }
+    }
+  }*/
   return true;
 }
 
