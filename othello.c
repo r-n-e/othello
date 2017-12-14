@@ -104,7 +104,7 @@ bool fillBoard(Cell board[HIGHT][WIDTH]) {
     for(int x=0; x < WIDTH ; x++) {
       if(board[x][y] == Blank) {
         return false;
-      } else if(y == HIGHT-1 && x == WIDTH-1)
+      } else if(y == HIGHT-1 && x == WIDTH-1) {
     	return true;
       }
     }
