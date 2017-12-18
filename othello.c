@@ -143,7 +143,20 @@ void finishGame(Cell board[HIGHT][WIDTH]) {
 
 bool isOneColor(Cell board[HIGHT][WIDTH]) {
   // TODO: cellが一色だけのときtrue
-  return true;
+  enum Cell color = Blank;
+  for (int y=0; y < HIGHT; y++) {
+    for(int x=0; x < WIDTH ; x++) {
+      if(board[x][y]!=Blank) {
+        if(color == Blank) {
+          color = board[x][y];
+    	} else if(board[x][y]!=color) {
+          return false;
+        }
+      }
+    if(y == HIGHT-1 && x == WIDTH-1)
+      return true;
+    }
+  }
 }
 
 void inputCell(int selectedCell[2]){
