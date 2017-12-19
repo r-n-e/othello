@@ -168,7 +168,14 @@ void inputCell(int selectedCell[2]){
 
 bool canPut(int selectedCell[2], int enableCells[64][2]) {
   // TODO: enableCellsにselectedCellが含まれていたらtrue
-  return true;
+  for(int i=0;i<64;i++) {
+    if(selectedCell[0]==enableCells[i][0] && selectedCell[1]==enableCells[i][1]) {
+      return true;
+      break;
+    } else if(i == 64-1) {
+      return false;
+    }
+  }
 }
 
 void reverse(bool isFirst, int selectedCell[2], Cell board[HIGHT][WIDTH]) {
