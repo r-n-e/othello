@@ -195,10 +195,12 @@ void reverse(bool isFirst, int selectedCell[2], Cell board[HIGHT][WIDTH]) {
           x2 += nextcell[a][0];
   	  y2 += nextcell[a][1];
 	  //if(座標[x2][y2]が盤面の中かの判定){
-  	  if(board[x2][y2] == cellcolor) {
+  	  if(board[x2][y2] == Blank) {
+	    break;
+	  }else if(board[x2][y2] == cellcolor) {
   	    for(int j = 0; j < i+1 ; j++) {
               x2 -= nextcell[a][0];
-              y2 -= nextcell[a][0];
+              y2 -= nextcell[a][1];
               board[x2][y2] = cellcolor;
   	    }
   	  }
