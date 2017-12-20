@@ -193,12 +193,12 @@ void reverse(bool isFirst, int selectedCell[2], Cell board[HIGHT][WIDTH]) {
 			 {1,-1},{1,0},{1,1}};
   for(int a = 0; a < 8; a++) {
     int x2 = x+nextcell[a][0] , y2 = y+nextcell[a][1];
-    if(if(x2 < 0 || x2 > 7 || y2 < 0 || y2 > 7)){
+    if(x2 < 0 || x2 > 7 || y2 < 0 || y2 > 7){
       if(board[x2][y2] != Blank && board[x2][y2] != cellcolor) {
         for(int i = 0; i < 6; i++) {
           x2 += nextcell[a][0];
           y2 += nextcell[a][1];
-	  if(if(x2 < 0 || x2 > 7 || y2 < 0 || y2 > 7)){
+	  if(x2 < 0 || x2 > 7 || y2 < 0 || y2 > 7){
   	    if(board[x2][y2] == Blank) {
 	      break;
 	    }else if(board[x2][y2] == cellcolor) {
