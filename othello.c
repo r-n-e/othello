@@ -180,9 +180,13 @@ bool canPut(int selectedCell[2], int enableCells[64][2]) {
 
 void reverse(bool isFirst, int selectedCell[2], Cell board[HIGHT][WIDTH]) {
   // TODO: selectedCellの場所に置き、boardを更新する
-  //未完成
   int x = selectedCell[0], y = selectedCell[1];
-  //board[x][y] = ;
+  board[x][y] = 0;
+  if(isFirst) {
+    board[x][y] = Black;
+  } else {
+    board[x][y] = White;
+  }
   enum Cell cellcolor = board[x][y];
   int nextcell[8][2] = { {-1,-1},{-1,0},{-1,1},
 			 {0,-1},        {0,1},
